@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy Pronouns in RTF</title>
+    <style>
+        button {
+            margin: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button id="hehim">He/Him</button>
+    <button id="sheher">She/Her</button>
+    <button id="theythem">They/Them</button>
+    <button id="custom">Custom</button>
+
+    <script>
+        // JavaScript function to fetch content from server and copy it in RTF format
+        async function copyRTF(file) {
+            try {
+                const response = await fetch(file);
+                const rtf = await response.text();
+
+                // Use Clipboard API to copy RTF content
+                await navigator.clipboard.write([
+                    new ClipboardItem({
+                        'text/rtf': new Blob([rtf], { type: 'text/rtf' })
+                    })
+                ]);
+
+                alert('Rich text copied!');
+            } catch (error) {
+                console.error('Error copying RTF:', error);
+            }
+        }
+
+        // Attach click event listeners to the buttons
+        document.getElementById('hehim').addEventListener('click', () => copyRTF('/assets/signature-pronouns/hehim.rtf'));
+        document.getElementById('sheher').addEventListener('click', () => copyRTF('/assets/signature-pronouns/sheher.rtf'));
+        document.getElementById('theythem').addEventListener('click', () => copyRTF('/assets/signature-pronouns/theythem.rtf'));
+        document.getElementById('custom').addEventListener('click', () => copyRTF('/assets/signature-pronouns/custom.rtf'));
+    </script>
+</body>
+</html>
