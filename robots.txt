@@ -1,0 +1,12 @@
+User-agent: *
+# Block admin and sensitive directories
+Disallow: /tools/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /fonts/
+
+# Allow essential assets for rendering
+Allow: /assets/
+
+# Sitemap
+Sitemap: https://pronouns.wiki/sitemap.xml
