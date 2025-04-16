@@ -56,40 +56,57 @@ const preloadedPages = {};
 function preloadPage(url) {
   if (!preloadedPages[url]) {
     fetch(url)
-      .then((response) => response.text())
-      .then((html) => {
+      .then(response => response.text())
+      .then(html => {
         const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-        const mainContent = doc.querySelector("main").innerHTML;
+        const doc = parser.parseFromString(html, 'text/html');
+        const mainContent = doc.querySelector('main').innerHTML;
         preloadedPages[url] = mainContent;
       })
-      .catch((err) => console.error("Failed to preload:", err));
+      .catch(err => console.error('Failed to preload:', err));
   }
 }
 
 function updateMainContent(event, url) {
   event.preventDefault();
   if (preloadedPages[url]) {
-    document.getElementById("main-content").innerHTML = preloadedPages[url];
-    window.history.pushState(null, "", url);
+    document.getElementById('main-content').innerHTML = preloadedPages[url];
+    window.history.pushState(null, '', url);
   } else {
     fetch(url)
-      .then((response) => response.text())
-      .then((html) => {
+      .then(response => response.text())
+      .then(html => {
         const parser = new DOMParser();
-        const doc = parser.parseFromString(html, "text/html");
-        document.getElementById("main-content").innerHTML = doc.querySelector("main").innerHTML;
-        window.history.pushState(null, "", url);
+        const doc = parser.parseFromString(html, 'text/html');
+        document.getElementById('main-content').innerHTML = doc.querySelector('main').innerHTML;
+        window.history.pushState(null, '', url);
       })
-      .catch((err) => console.error("Failed to load page:", err));
+      .catch(err => console.error('Failed to load page:', err));
   }
 }
 
 // Attach event listeners to internal links
-document.querySelectorAll(".internal-link").forEach((link) => {
-  const url = link.getAttribute("href");
-  link.addEventListener("mouseover", () => preloadPage(url));
-  link.addEventListener("click", (event) => updateMainContent(event, url));
+document.querySelectorAll('.internal-link').forEach(link => {
+  const url = link.getAttribute('href');
+  link.addEventListener('mouseover', () => preloadPage(url));
+  link.addEventListener('click', event => updateMainContent(event, url));
+});
+
+// Handle browser back/forward buttons
+window.addEventListener('popstate', () => {
+  const url = window.location.pathname;
+  if (preloadedPages[url]) {
+    document.getElementById('main-content').innerHTML = preloadedPages[url];
+  } else {
+    fetch(url)
+      .then(response => response.text())
+      .then(html => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(html, 'text/html');
+        document.getElementById('main-content').innerHTML = doc.querySelector('main').innerHTML;
+      })
+      .catch(err => console.error('Failed to load page:', err));
+  }
 });
 
 // Performance optimization - Use requestIdleCallback for non-critical operations
