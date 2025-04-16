@@ -1,4 +1,8 @@
 User-agent: *
+Allow: /
+Disallow: /assets/scripts/
+Disallow: /assets/styles/
+
 # Block admin and sensitive directories
 Disallow: /tools/
 Disallow: /private/
