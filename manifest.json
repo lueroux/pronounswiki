@@ -1,85 +1,30 @@
 {
   "name": "Pronouns Wiki",
   "short_name": "Pronouns",
-  "description": "A comprehensive guide to understanding gender-inclusive pronouns",
+  "description": "Understanding Gender-Inclusive Pronouns: A Guide to Inclusivity",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#F7FAFC",
-  "theme_color": "#6C63FF",
-  "orientation": "portrait-primary",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff",
   "icons": [
     {
       "src": "/assets/favicons/android-chrome-192x192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     },
     {
       "src": "/assets/favicons/android-chrome-512x512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any maskable"
+      "type": "image/png"
     }
   ],
   "shortcuts": [
     {
-      "name": "She/Her Pronouns",
-      "short_name": "She/Her",
-      "description": "Learn about she/her pronouns",
-      "url": "/she",
-      "icons": [{ "src": "/assets/favicons/she-her.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "He/Him Pronouns",
-      "short_name": "He/Him",
-      "description": "Learn about he/him pronouns",
-      "url": "/he",
-      "icons": [{ "src": "/assets/favicons/he-him.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "They/Them Pronouns",
-      "short_name": "They/Them",
-      "description": "Learn about they/them pronouns",
-      "url": "/they",
-      "icons": [{ "src": "/assets/favicons/they-them.png", "sizes": "192x192" }]
-    },
-    {
-      "name": "Neopronouns",
-      "short_name": "Neopronouns",
-      "description": "Learn about neopronouns",
-      "url": "/neopronouns",
-      "icons": [{ "src": "/assets/favicons/neopronouns.png", "sizes": "192x192" }]
+      "name": "Learn About Pronouns",
+      "short_name": "Pronouns",
+      "description": "Learn about gender-inclusive pronouns",
+      "url": "/",
+      "icons": [{ "src": "/assets/favicons/pronouns-wiki.svg", "sizes": "192x192" }]
     }
-  ],
-  "categories": ["education", "social", "lifestyle"],
-  "lang": "en-US",
-  "dir": "ltr",
-  "prefer_related_applications": false,
-  "screenshots": [
-    {
-      "src": "/assets/screenshots/home.png",
-      "sizes": "1280x720",
-      "type": "image/png",
-      "platform": "wide",
-      "label": "Pronouns Wiki Homepage"
-    },
-    {
-      "src": "/assets/screenshots/mobile.png",
-      "sizes": "750x1334",
-      "type": "image/png",
-      "platform": "narrow",
-      "label": "Pronouns Wiki Mobile View"
-    }
-  ],
-  "related_applications": [],
-  "scope": "/",
-  "share_target": {
-    "action": "/share",
-    "method": "GET",
-    "params": {
-      "title": "title",
-      "text": "text",
-      "url": "url"
-    }
-  }
+  ]
 } 
