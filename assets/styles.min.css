@@ -1,4 +1,5 @@
 :root {
+  /* Color System */
   --primary: #6C63FF;
   --primary-light: #8B85FF;
   --primary-dark: #4A42D4;
@@ -12,19 +13,62 @@
   --success: #38A169;
   --warning: #DD6B20;
   --info: #3182CE;
+  
+  /* Spacing System */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2rem;
+  --space-6: 3rem;
+  --space-8: 4rem;
+  
+  /* Typography */
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+  --font-size-4xl: 2.25rem;
+  --font-size-5xl: 3rem;
+  
+  /* Border Radius */
   --radius-sm: 4px;
   --radius-md: 8px;
   --radius-lg: 16px;
+  --radius-full: 9999px;
+  
+  /* Shadows */
   --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
   --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
   --shadow-lg: 0 10px 15px rgba(0,0,0,0.1);
-  --transition: all 0.3s ease;
+  
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+  
+  /* Z-index */
+  --z-0: 0;
+  --z-10: 10;
+  --z-20: 20;
+  --z-30: 30;
+  --z-40: 40;
+  --z-50: 50;
 }
 
-* {
+/* Reset and Base Styles */
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -34,15 +78,20 @@ body {
   background-color: var(--background);
   padding: 0;
   margin: 0;
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* Container */
 .container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--space-4);
 }
 
+/* Header */
 .pw-header {
   position: fixed;
   top: 0;
@@ -50,14 +99,17 @@ body {
   width: 100%;
   height: 80px;
   background-color: var(--surface);
-  z-index: 1000;
+  z-index: var(--z-50);
   display: flex;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 var(--space-4);
   box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
+/* Logo */
 .logo-container {
   display: flex;
   justify-content: center;
@@ -66,42 +118,47 @@ body {
 
 .center-logo {
   height: 50px;
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  will-change: transform;
 }
 
+/* Main Content */
 main {
   padding-top: 100px;
   min-height: calc(100vh - 100px);
 }
 
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   color: var(--text);
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-4);
   line-height: 1.2;
+  font-weight: 700;
 }
 
 h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+  font-size: var(--font-size-4xl);
+  margin-bottom: var(--space-6);
 }
 
 h2 {
-  font-size: 2rem;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
+  font-size: var(--font-size-3xl);
+  margin-top: var(--space-8);
+  margin-bottom: var(--space-4);
 }
 
 p {
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-4);
   color: var(--text-light);
 }
 
+/* Links */
 a {
   color: var(--primary);
   text-decoration: none;
-  transition: var(--transition);
+  transition: var(--transition-fast);
   border-bottom: 2px solid transparent;
+  position: relative;
 }
 
 a:hover, a:focus {
@@ -109,26 +166,18 @@ a:hover, a:focus {
   border-bottom-color: var(--primary);
 }
 
-ul, ol {
-  margin: 1.5rem 0;
-  padding-left: 2rem;
-}
-
-li {
-  margin-bottom: 0.75rem;
-  color: var(--text-light);
-}
-
+/* Buttons */
 button {
   background-color: var(--primary);
   color: white;
   border: none;
-  padding: 0.75rem 1.5rem;
+  padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-md);
-  font-size: 1rem;
+  font-size: var(--font-size-base);
   font-weight: 600;
   cursor: pointer;
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  will-change: transform;
 }
 
 button:hover {
@@ -136,21 +185,15 @@ button:hover {
   transform: translateY(-2px);
 }
 
-.section {
-  padding: 4rem 0;
-  background-color: var(--surface);
-  border-radius: var(--radius-lg);
-  margin: 2rem 0;
-  box-shadow: var(--shadow-sm);
-}
-
+/* Cards */
 .card {
   background-color: var(--surface);
-  border-radius: var(--radius-md);
-  padding: 2rem;
-  margin: 1rem 0;
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin: var(--space-4) 0;
   box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+  transition: var(--transition-normal);
+  will-change: transform;
 }
 
 .card:hover {
@@ -161,20 +204,21 @@ button:hover {
 /* Accessibility Features */
 .accessibility-button {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: var(--space-6);
+  right: var(--space-6);
   width: 60px;
   height: 60px;
   background-color: var(--primary);
   border: none;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   box-shadow: var(--shadow-md);
-  transition: var(--transition);
-  z-index: 1000;
+  transition: var(--transition-normal);
+  z-index: var(--z-50);
+  will-change: transform;
 }
 
 .accessibility-button:hover {
@@ -188,11 +232,11 @@ button:hover {
   left: 0;
   right: 0;
   background-color: var(--surface);
-  padding: 2rem;
+  padding: var(--space-6);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-lg);
-  transition: var(--transition);
-  z-index: 1000;
+  transition: var(--transition-normal);
+  z-index: var(--z-40);
 }
 
 .accessibility-panel.show {
@@ -205,6 +249,7 @@ button:hover {
   --text: #FFFFFF;
   --background: #000000;
   --surface: #1A1A1A;
+  --text-light: #CCCCCC;
 }
 
 /* Easy Read Mode */
@@ -213,6 +258,7 @@ button:hover {
   --text: #000000;
   --background: #FFFFF0;
   --surface: #FFFFFF;
+  --text-light: #333333;
 }
 
 /* Dyslexia Friendly Mode */
@@ -225,20 +271,21 @@ button:hover {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  :root {
+    --font-size-4xl: 2rem;
+    --font-size-3xl: 1.75rem;
+  }
+  
   .container {
-    padding: 0 1rem;
-  }
-  
-  h1 {
-    font-size: 2rem;
-  }
-  
-  h2 {
-    font-size: 1.75rem;
+    padding: 0 var(--space-3);
   }
   
   .section {
-    padding: 2rem 0;
+    padding: var(--space-4) 0;
+  }
+  
+  .card {
+    padding: var(--space-4);
   }
 }
 
@@ -249,10 +296,10 @@ button:hover {
 }
 
 .fade-in {
-  animation: fadeIn 0.5s ease-in;
+  animation: fadeIn var(--transition-normal) forwards;
 }
 
-/* Performance Optimizations */
+/* Image Optimization */
 img {
   max-width: 100%;
   height: auto;
@@ -261,7 +308,7 @@ img {
 
 .lazy-load {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity var(--transition-normal);
 }
 
 .lazy-load.loaded {
@@ -282,5 +329,31 @@ img {
   
   a {
     text-decoration: underline;
+  }
+}
+
+/* Focus Styles */
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #E2E8F0;
+    --text-light: #A0AEC0;
+    --background: #1A202C;
+    --surface: #2D3748;
   }
 }
