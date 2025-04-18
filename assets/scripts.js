@@ -91,3 +91,21 @@ document.querySelectorAll(".internal-link").forEach((link) => {
   link.addEventListener("mouseover", () => preloadPage(url));
   link.addEventListener("click", (event) => updateMainContent(event, url));
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu-content');
+
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (!navMenu.contains(event.target) && !navToggle.contains(event.target)) {
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+});
