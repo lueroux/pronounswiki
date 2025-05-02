@@ -1,35 +1,12 @@
-# Allow all crawlers
 User-agent: *
-Allow: /
-
-# Sitemap location
-Sitemap: https://pronouns.wiki/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 10
-
-# Disallow admin and private areas
-Disallow: /admin/
+# Block admin and sensitive directories
+Disallow: /tools/
 Disallow: /private/
 Disallow: /cgi-bin/
-Disallow: /tmp/
-Disallow: /logs/
+Disallow: /fonts/
 
-# Allow specific file types
-Allow: /*.html$
-Allow: /*.css$
-Allow: /*.js$
-Allow: /*.png$
-Allow: /*.jpg$
-Allow: /*.gif$
-Allow: /*.svg$
-Allow: /*.ico$
+# Allow essential assets for rendering
+Allow: /assets/
 
-# Block specific paths
-Disallow: /search
-Disallow: /api/
-Disallow: /debug/
-Disallow: /test/
-
-# Host directive
-Host: https://pronouns.wiki
+# Sitemap
+Sitemap: https://pronouns.wiki/sitemap.xml
